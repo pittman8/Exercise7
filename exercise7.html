@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Exercise 7</title>
+    <!-- Styling for colorbox-->
+    <!-- For some reason: can't see arrows to go to the next or previous picture on the colorbox -->
+    <!-- I put borders around the button so you can see at least where they are-->
+    <link href="./css/all.css" rel="stylesheet" type="text/css" media="all" />
+    
     <style>
         #name {
             width: 150px;
@@ -67,9 +72,27 @@
                 .append('<p>Good Choice!</p>'); // add message
         });
         
-        
-        
-        
+        // 5)
+        $(function() {
+        "use strict";
+            
+            // Finds all flower ids
+	         var $flowers = $('#flower-items');
+	
+	         $flowers
+                .find('a') // locate pictures
+                .colorbox({ // create colorbox
+                'rel' : 'gallery', 
+                'maxWidth' : '80%',
+                'transition' : 'fade', // fade transition
+                'speed' : 150,
+                'opacity' : 0.5, // overlay background more transparent
+                'slideshow' : true, // create slideshow
+                'slideshowSpeed' : 3000, // 3 second transition
+                'current' : 'arrangement {current} of {total}'
+    	      });
+        });
+
     </script>
 </head>
 <body>
@@ -96,7 +119,26 @@
     <!-- "extra good choice" labeled with green background-->
 	<input type="text" name="color" value="green" placeholder="Personal choice, really!">
 	</div>
-	
-</form>
+    <br /> <br />
+    </form>
+    
+    <div id= "flowers">
+        <ul id="flower-items">
+            <a href="./images/callalilly_arrangement.jpg">
+            <span class="img"><img src="./images/callalilly.jpg" width="160" height="160"/></span>
+            </a>
+            <a href="images/sunflower_arrangement.jpg">
+            <span class="img"><img src="./images/sunflower.jpg" width="160" height="160"/></span>
+            </a>
+            <a href="images/iris_arrangement.jpg">
+            <span class="img"><img src="./images/iris.jpg" width="160" height="160"/></span>
+            </a>
+            <a href="images/lily_arrangment.jpg">
+            <span class="img"><img src="./images/lily.jpg" width="160" height="160"/></span>
+            </a>
+        </ul>
+    </div>
+    <!--Updated colorbox version-->
+    <script src="./colorbox/jquery.colorbox.js"></script>
 </body>
 </html>
