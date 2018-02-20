@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Exercise 7</title>
-    <!-- Styling for colorbox-->
-    <!-- For some reason: can't see arrows to go to the next or previous picture on the colorbox -->
-    <!-- I put borders around the button so you can see at least where they are-->
+    <!-- Styling for colorbox
+        When copying code over from the Lynda tutorial, there was an issue.
+        You can't see arrows to go to the next or previous picture on the colorbox
+        I put white borders around the buttons so you can see at least where they are-->
     <link href="./css/all.css" rel="stylesheet" type="text/css" media="all" />
     
     <style>
@@ -43,6 +44,14 @@
             margin-bottom: 0.2em;
             font-size: 85%;
             font-weight: bold;
+        }
+        
+        #movingImage {
+            width: 256px;
+            height: 256px;
+            position: absolute;
+            background-image: url('./images/flash.jpg');
+            cursor: pointer;
         }
         
     </style>
@@ -92,7 +101,20 @@
                 'current' : 'arrangement {current} of {total}'
     	      });
         });
-
+        
+        // 6)
+        $(document).ready(function(){
+            $("#move").click(function(){
+                $("#movingImage").animate(
+                    {
+                        left: '1000px', // move across screen
+                        opacity: .5 // fade to half (50%)
+                    },
+                    1000, 'easeOutBounce' // easing over the course of 1 second
+                ); // end animate
+            });  // end click   
+        }); // end ready
+        
     </script>
 </head>
 <body>
@@ -119,6 +141,7 @@
     <!-- "extra good choice" labeled with green background-->
 	<input type="text" name="color" value="green" placeholder="Personal choice, really!">
 	</div>
+        
     <br /> <br />
     </form>
     
@@ -138,7 +161,15 @@
             </a>
         </ul>
     </div>
+
+    <button id = "move">Move it!</button> <!--only this button will move the image-->
+    <br /> <br />
+    <div id = movingImage></div>
+            
     <!--Updated colorbox version-->
     <script src="./colorbox/jquery.colorbox.js"></script>
+    
+    <!--Easing source-->
+    <script type='text/javascript' src='jquery.easing.1.3.js'></script>
 </body>
 </html>

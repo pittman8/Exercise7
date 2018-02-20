@@ -112,12 +112,13 @@
 			right: 360px;
 		}
 		
+/*
 		#cboxPreviousLink:before {
 			content: '< ';
-            background-color: white;
 		}
 		
 		#cboxNextLink:after {
 			content: ' >';
 		}
+*/
 
